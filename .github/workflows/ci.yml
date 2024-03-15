@@ -21,7 +21,7 @@ jobs:
       - name: Set up Scala 
         uses: olafurpg/setup-scala@v10
       - name: Refresh data
-        run:  cd github-app && sbt "runMain io.github.manuzhang.graphql.GetAwesomeVideoRepos --auth-token ${{ secrets.GITHUB_TOKEN }}" && cp awesome-video-repos.json ../src/assets/repos.json && cd ..
+        run:  cd github-app && sbt "runMain io.github.manuzhang.graphql.GetAwesomeVideoRepos --auth-token ${{ secrets.GHTOKEN }}" && cp awesome-video-repos.json ../src/assets/repos.json && cd ..
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
