@@ -16,12 +16,12 @@ jobs:
       - name: Checkout GitHub App
         uses: actions/checkout@v2
         with:
-          repository: manuzhang/github-app
+          repository: krzemienski/github-app
           path: github-app
       - name: Set up Scala 
         uses: olafurpg/setup-scala@v10
       - name: Refresh data
-        run:  cd github-app && sbt "runMain io.github.manuzhang.graphql.GetAwesomeStreamingRepos --auth-token ${{ secrets.GITHUB_TOKEN }}" && cp awesome-streaming-repos.json ../src/assets/repos.json && cd ..
+        run:  cd github-app && sbt "runMain io.github.manuzhang.graphql.GetAwesomeVideoRepos --auth-token ${{ secrets.GITHUB_TOKEN }}" && cp awesome-video-repos.json ../src/assets/repos.json && cd ..
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
@@ -29,9 +29,9 @@ jobs:
           cache: 'yarn'
       - run: yarn
       - run: yarn run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ./dist
-          external_repository: manuzhang/awesome-streaming
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     personal_token: ${{ secrets.PERSONAL_TOKEN }}
+      #     publish_dir: ./dist
+      #     external_repository: manuzhang/awesome-streaming
